@@ -1,0 +1,41 @@
+
+{% extends 'base/index.html'%}
+{% block content %}
+
+<div class="auth layout">
+
+    
+  <div class="form">
+    <div class="title">Login</div>
+      <div class="subtitle">Your account details</div>
+
+      <form method="POST" action="">
+
+        {% csrf_token %}
+                        
+         <div class="input-container ic1">
+           <input placeholder="Username" type="text" class="input" name="username">
+
+         </div>
+        
+            <div class="input-container ic2">
+              <input placeholder="Password" type="password" class="input" name="password" >
+              </div>
+
+            <button class="submit" type="submit">Login</button>
+              
+          </form>
+
+            <div class="bottom-title-login">
+              <p>Not yet registered?  <a href="{% url 'register' %}">Sign Up</a>  </p>
+             
+            </div>
+          </div>
+        </div>
+
+   
+
+       
+</div>
+
+{% endblock %}

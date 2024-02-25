@@ -1,0 +1,15 @@
+{% extends 'base/index.html'%}
+
+{% block content %}
+ 
+<p>Posts containing '{{query_string}}'</p>
+
+{% for post in posts %}
+    <div>
+        <span>{{ post.created }} </span>
+        <a href="{% url 'post-detail' post.id %}"><h2>{{ post.title }}</h2></a>
+    </div>
+{% endfor %}
+
+
+{% endblock%}

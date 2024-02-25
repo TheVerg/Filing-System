@@ -1,0 +1,31 @@
+{% extends 'base/index.html' %}
+ {% block content %}
+
+
+ {% for post in posts %}
+      <div>
+        <div>
+          {% if post.file %}
+          <a href="{{ post.file.url }}"><h5>{{ post.blog }}</h5></a>
+          {% endif %}
+     
+      
+
+          <h2><a  href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+          <p><a href="{% url 'user-posts' post.author.id  %}">{{post.author}}</a></p>
+
+        </div>
+            {% if post.file %}
+          <div>          
+            <a href="{{ post.file.url }}"><i></i></a>
+          </div>
+          {% endif %}
+        
+          </div>
+      
+        </div>
+      </div> 
+    {% endfor %}
+
+
+{% endblock %}

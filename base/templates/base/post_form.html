@@ -1,0 +1,30 @@
+{% extends 'base/index.html'%}
+{% block content %}
+
+
+<form method="POST" action="{% url 'post-create'%}">
+    <div class="form">
+
+      {% csrf_token %}
+    
+      <div class="title">Files</div>
+        <div class="subtitle">Adding documents</div>
+                          
+           <div class="input-container ic1">
+             {{form.title}}
+                  </div>
+              <div class="input-container ic2">
+                          {{form.content}}
+
+                        </div>
+              <div class="input-container ic3">
+                {{form.file}}
+              <button class="submit"  type="text">Upload</button>
+               </div>
+             
+    </div>
+</form>
+
+
+
+{% endblock %}

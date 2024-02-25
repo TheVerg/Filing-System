@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title>file_mamangement_system - {{title}}</title>
+             {% else %}
+        <title>file_mamangement_system</title>
+                {% endif %}
+             <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+             <meta content="" name="keywords">
+             <meta content="" name="description">
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+             integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+             <link rel="stylesheet" href="{% static 'base/main.css' %}">
+                </head>
+                
+    <body>
+
+          <div class="header">
+        <div class="container__header">
+
+          <div id="logo"><a href="#">
+            <h1 ><a href="{% url 'home' %}">File Management</a></h1>
+            
+            </a></div>
+            
+
+                <form class="header_search" action="{% url 'search'%}" method="GET">
+
+                  <div class="search">
+                    
+                    <input type="text" name="q" value="{{ request.GET.q }}"  placeholder="Search for documents"/>
+                    <button type="submit">Go</button>
+                  </div>
+
+                </form> 
+                    
+            </div> 
+              <div class="navbar">
+
+                {% if request.user.is_authenticated %}
+                   <button class="button2">
+                        <a class="{% url 'user-posts' user%}" href=> My Post</a>
+                      </button>
+                    
+                    <button class="button2">
+                       <a class="navbar-links" href="{% url 'post-create' %}"> New Post</a>
+                      </button>
+
+                    <button class="button2">
+                     <a class="navbar-links" href="{% url 'logout'%}"> LogOut</a>
+                      </button>
+
+                      {% else %}
+
+                  <button class="button2">
+                    <a class="navbar-links" href="{% url 'login'%}">Login</a>
+                  </button>
+
+
+		  <button class="button2">
+                    <a class="navbar-links" href="{% url 'register' %} ">Sign Up</a>
+                  </button>
+                  {% endif %}
+
+
+                    <div class="toggle_btn">
+                      <i class="fa-solid fa-bars"></i>
+                        </div>
+                  
+
+                </div>
+
+                <div class="dropdown-menu">
+      
+                  {% if request.user.is_authenticated %}
+                    <li><a class="navbar-links" href="{% url 'user-posts' user%}"> My Post</a></li>
+                    <li><a class="navbar-links" href="{% url 'post-create' %} "> New Post</a></li>
+                      <li><a class="navbar-links" href="{% url 'logout'%}"> LogOut</a></li>
+
+                      {% else %}
+                        <li><a class="navbar-links" href="{% url 'login'%}">Login</a></li>
+                        <li><a class="navbar-links" href="{% url 'register' %}">Sign Up</a></li>
+                   
+                        {% endif %}
+
+                      </div>
+
+              
+
+
+
+            </div>
+
+            {% block content %}
+      
+            {% endblock  %}
+
+
+            <script src="{% static 'base/main.js' %}"></script>
+
+    </body>
+</html>

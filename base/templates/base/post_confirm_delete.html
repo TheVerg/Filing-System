@@ -1,0 +1,20 @@
+{% extends 'base/index.html'%}
+{% block content%}
+
+            <form method="POST" action="">
+              {% csrf_token %}
+
+                    <div class="delete">
+
+                        <p>Are you sure you want to delete "{{object.title}}" ?</p>
+                        
+                        <a href="{% url 'post-delete' post.id %}">
+                          <input type="submit" value="Delete" id="delete-btn">
+                              </a>
+                        
+                          <a href="{% url 'post-detail' post.id %}">Cancel</a>
+
+                    </div>
+
+            </form>
+{% endblock %}

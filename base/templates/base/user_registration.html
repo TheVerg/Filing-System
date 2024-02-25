@@ -1,0 +1,40 @@
+{% extends 'base/index.html' %}
+{% block content %}
+                <div class="form">
+                  
+
+
+      <div class="title">Welcome</div>
+        <div class="subtitle">Create your account</div>
+
+                          <form method="POST">
+                            {% csrf_token %}
+                            
+                     <div class="input-container ic1">
+            <input placeholder="Username" type="text" class="input"> {{field.username}}
+                     </div>
+       
+             <div class="input-container ic2">
+               <input placeholder="Password" type="password" class="input" >{{field.password1}}
+                     
+             </div>
+         
+             <div class="input-container ic2">
+               <input placeholder="Password Confirm" type="password" class="input">{{field.password2}}
+               </div>
+
+              <button class="submit" type= "submit" >Sign Up</button>
+            
+                            </form>
+
+              <div class="bottom-title">
+                <p>Already signed?  <a href="{% url 'login'%}">Login</a>  </p>
+                    
+              
+              </div>
+            
+            
+            </div>
+
+
+            {% endblock %}

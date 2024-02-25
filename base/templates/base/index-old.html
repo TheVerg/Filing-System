@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% if title %}
+        <title>file_mamangement_system - {{title}}</title>
+    {% else %}
+        <title>file_mamangement_system</title>
+    {% endif %}
+</head>
+
+<body>
+            <h1 ><a href="{% url 'home' %}">File Management</a></h1>
+    <nav>
+        
+        <div>
+            <form action="{% url 'search'%}" method="GET">
+              <label>
+          
+                <input type="text" name="q" value="{{ request.GET.q }}"  placeholder="Search for documents"/>
+          
+              </label>
+            </form>
+          </div>
+
+          <hr>
+    <div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'user-posts' user%}"> My Post</a>
+        <a href="{% url 'post-create' %} " ><i></i> New Post</a>
+        
+        <a href="{% url 'logout'%}" > LogOut</a>
+        
+        {% else %}
+        <a href="{% url 'login'%}"> Login</a>
+       
+        <a href="{% url 'register' %} ">Sign Up</a>
+        {% endif %}
+
+        </div>
+    
+    </nav>
+
+    <hr>
+
+    {% block content %}
+      
+    {% endblock  %}
+
+
+</body>
+</html>
